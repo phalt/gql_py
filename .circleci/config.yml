@@ -1,0 +1,30 @@
+
+version: 2
+jobs:
+  build:
+    steps:
+      - checkout
+      - run: sudo pip install -r test_requirements.txt
+  test:
+    branches:
+      ignore:
+        - master
+    steps:
+      - checkout
+      - run: make lint
+      - run: make test
+  docs:
+    branches:
+      only:
+        - master
+    steps:
+      - checkout
+      - run: mkdocs gh-deploy --remote-name upstream --clean -v
+
+workflows:
+  version: 2
+  build_and_test_and_docs:
+    jobs:
+      - build
+      - test
+      - docs
