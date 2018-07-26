@@ -4,6 +4,7 @@
 """Tests for `gql_py` package."""
 
 import pytest
+
 from gql_py import gql_py
 
 

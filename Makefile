@@ -52,7 +52,7 @@ clean-test: ## remove test and coverage artifacts
 lint: ## check style with flake8
 	flake8 gql_py tests
 	mypy --ignore-missing-imports gql_py/ tests/
-	isort
+	isort -c -rc gql_py/ tests/
 
 test: ## run tests quickly with the default Python
 	pytest
