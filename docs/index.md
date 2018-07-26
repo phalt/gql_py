@@ -5,11 +5,9 @@ _GraphQL Client for Pythonistas_
 
 gql.py is a Pythonic interface around graphQL APIs.
 
-You've probably got a graphQL API sitting on a webserver somewhere, and you want to talk to it, right?
+You've got a graphQL API, and you want to talk to it, right?
 
-GraphQL's use of HTTP is questionable at best, for those of us who love HTTP standards. But you can't deny graphQL's usefulness.
-
-The goal of this library is to remove the fuss of HTTP so you can deal with graphQL directly. Just how graphQL's developers intended.
+GraphQL's use of HTTP is questionable at best, for those of us who love HTTP standards. But you can't deny graphQL's usefulness. The goal of this library is to remove the fuss of HTTP so you can deal with graphQL directly. Just how graphQL's developers intended.
 
 [![PyPi][pypi-image]][pypi-link]
 [![CircleCI][circle-image]][circle-link]
