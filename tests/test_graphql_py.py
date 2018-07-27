@@ -5,7 +5,7 @@
 
 import pytest
 
-from gql_py import gql_py
+from gql_py import Gql
 
 
 @pytest.fixture
@@ -18,8 +18,6 @@ def response():
     # return requests.get('https://github.com/audreyr/cookiecutter-pypackage')
 
 
-def test_content(response):
-    """Sample pytest test function with the pytest fixture as an argument."""
-    # from bs4 import BeautifulSoup
-    # assert 'GitHub' in BeautifulSoup(response.content).title.string
-    assert gql_py.send()
+def test_object(response):
+    gql = Gql(api='http://test.com')
+    assert gql.api == 'http://test.com'
