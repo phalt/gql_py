@@ -16,7 +16,9 @@ GraphQL's use of HTTP is questionable at best, for those of us who love HTTP sta
 
 ```python
 
-from gql_py import gql
+from gql_py import Gql
+
+gql = Gql(api='https://graphql.org/swapi-graphql')
 
 query = '''
 query ($bookId: ID!) {
