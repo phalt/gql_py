@@ -5,20 +5,19 @@ _GraphQL Client for Pythonistas_
 
 gql.py is a Pythonic interface around graphQL APIs.
 
-You've got a graphQL API, and you want to talk to it, right?
-
-GraphQL's use of HTTP is questionable at best, for those of us who love HTTP standards. But you can't deny graphQL's usefulness. The goal of this library is to remove the fuss of HTTP so you can deal with graphQL directly. Just how graphQL's developers intended.
+You've got a graphQL API, and you want to talk to it, right? For t hose of us who love HTTP standards, GraphQL's use of HTTP is questionable at best. The goal of this library is to remove the fuss of HTTP so you can deal with graphQL directly. Just how graphQL's developers intended.
 
 [![PyPi][pypi-image]][pypi-link]
+[![PyPiV][pypi-image-v]][pypi-link]
+[![PyPiL][pypi-image-l]][pypi-link]
+[![PyPiS][pypi-image-s]][pypi-link]
 [![CircleCI][circle-image]][circle-link]
-[![Coverage Status][codecov-image]][codecov-link]
-[![Landscape Status][landscape-image]][landscape-link]
 
 ```python
 
 from gql_py import Gql
 
-gql = Gql(api='https://graphql.org/swapi-graphql')
+gql = Gql(api='https://example.com/graphql')
 
 query = '''
 query ($bookId: ID!) {
@@ -74,11 +73,10 @@ We use [Python Requests](http://docs.python-requests.org/en/master/) for talking
 
 
 [pypi-image]: https://img.shields.io/pypi/v/gql_py.svg
-[pypi-link]: https://pypi.python.org/pypi/gql_py
+[pypi-image-v]: https://img.shields.io/pypi/pyversions/gql_py.svg
+[pypi-image-l]: https://img.shields.io/pypi/l/gql_py.svg
+[pypi-image-s]: https://img.shields.io/pypi/status/gql_py.svg
+[pypi-link]: https://pypi.org/project/gql-py/
 [pypi-dl-image]: https://img.shields.io/pypi/dm/gql_py.png
 [circle-image]: https://circleci.com/gh/phalt/gql_py/tree/master.svg?style=svg
 [circle-link]: https://circleci.com/gh/phalt/gql_py/tree/master
-[codecov-image]: https://codecov.io/gh/phalt/gql_py/branch/master/graph/badge.svg?token=T9mYPv0Ep2
-[codecov-link]: http://codecov.io/github/phalt/gql_py?branch=master
-[landscape-image]: https://landscape.io/github/phalt/gql_py/master/landscape.svg?style=flat&badge_auth_token=0cce4803ec014cf4ad889498bba7e7e7
-[landscape-link]: https://landscape.io/github/phalt/gql_py/master
