@@ -1,7 +1,7 @@
 🌐🐍 gql_py
 -------
 
-_GraphQL Client for Pythonistas_
+*GraphQL Client for Pythonistas*
 
 gql_py is a Pythonic interface around graphQL APIs.
 
