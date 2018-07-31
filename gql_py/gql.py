@@ -25,9 +25,8 @@ def to_camelcase(variables: Mapping[str, Any]) -> Mapping[str, Any]:
     NOTE: Converts nested dictionaries recursively so all keys are camelCased.
     """
     def convert(string):
-        # thanks to https://stackoverflow.com/a/1176023/1327062
-        s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', string)
-        return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
+        # thanks to https://stackoverflow.com/a/47253475/1327062
+        return re.sub('_([a-zA-Z0-9])', lambda m: m.group(1).upper(), string)
 
     converted_dict = {}
     for key, value in variables.items():
@@ -77,7 +76,7 @@ class Gql:
         return GraphQLResponse(
             errors=json_data.get('errors') or None,
             ok=result.status_code == 200 and not json_data.get('errors', []),
-            data=json_data.get('data'),
+            data=json_data.get('data') or None,
         )
 
     def send(

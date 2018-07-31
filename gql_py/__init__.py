@@ -6,4 +6,4 @@ __author__ = """Paul Hallett"""
 __email__ = 'paulandrewhallett@gmail.com'
 __version__ = '0.3.0'
 
-from .gql import Gql  # noqa
+from .gql import Gql, to_camelcase, normalise_query  # noqa
