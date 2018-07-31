@@ -3,6 +3,8 @@
 
 """Tests for `gql_py` package."""
 
+import json
+
 import pytest
 import responses
 
@@ -43,6 +45,36 @@ def test_headers_are_set_during_object_creation():
 
 
 @responses.activate
+def test_good_formatted_data_is_sent():
+    responses.add(responses.POST, 'http://test.com/graphql',
+                  body='''
+                    {"errors": [], "data": {"title": "blog title"}}''',
+                  status=200,
+                  content_type='application/json')
+    gql = Gql(api='http://test.com/graphql')
+    query = '''
+        query ($someValue: ID){
+            concept(id: $someValue){
+                name
+            }
+        }
+
+    '''
+    gql.send(
+        query=query,
+        variables={'some_value': 'bar'},
+        headers={'foo': 'bar'}
+    )
+    http_call = responses.calls[0].request
+    json_post_data = json.loads(http_call.body)
+    assert json_post_data['variables'] == {'someValue': 'bar'}
+    assert json_post_data['query'] == (
+        'query ($someValue: ID){ concept(id: $someValue){ name } }'
+    )
+
+
+
+@responses.activate
 def test_good_response():
     responses.add(responses.POST, 'http://test.com/graphql',
                   body='''
@@ -77,6 +109,9 @@ def test_bad_response():
     ),
     (
         {'nested': {'change_me': 'value'}}, {'nested': {'changeMe': 'value'}}
+    ),
+    (
+        {'ignoreMe': 'value'}, {'ignoreMe': 'value'}
     )
 ])
 def test_to_camel_case(input, output):
