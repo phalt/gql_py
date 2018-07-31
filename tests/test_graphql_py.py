@@ -8,7 +8,7 @@ import json
 import pytest
 import responses
 
-from gql_py import Gql, to_camelcase
+from gql_py import Gql, normalise_query, to_camelcase
 
 
 def test_basic_object():
@@ -73,7 +73,6 @@ def test_good_formatted_data_is_sent():
     )
 
 
-
 @responses.activate
 def test_good_response():
     responses.add(responses.POST, 'http://test.com/graphql',
@@ -102,7 +101,6 @@ def test_bad_response():
     assert result.data is None
 
 
-
 @pytest.mark.parametrize('input, output', [
     (
         {'some_variable': 'value'}, {'someVariable': 'value'}
@@ -116,3 +114,17 @@ def test_bad_response():
 ])
 def test_to_camel_case(input, output):
     assert to_camelcase(input) == output
+
+
+def test_normalise_query():
+    query = '''
+        query ($someValue: ID){
+            concept(id: $someValue){
+                name
+            }
+        }
+
+    '''
+    assert normalise_query(query) == (
+        'query ($someValue: ID){ concept(id: $someValue){ name } }'
+    )
