@@ -1,5 +1,0 @@
-site_name: gql.py
-theme: readthedocs
-
-pages:
-    - Home: 'index.md'

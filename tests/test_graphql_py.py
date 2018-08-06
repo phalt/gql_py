@@ -7,6 +7,7 @@ import json
 
 import pytest
 import responses
+from graphql.error.syntax_error import GraphQLSyntaxError
 
 from gql_py import Gql, normalise_query, to_camelcase
 
@@ -128,3 +129,10 @@ def test_normalise_query():
     assert normalise_query(query) == (
         'query ($someValue: ID){ concept(id: $someValue){ name } }'
     )
+
+
+def test_query_exception_raised_with_bad_data():
+    query = '{}'
+    gql = Gql(api='http://test.com/graphql')
+    with pytest.raises(GraphQLSyntaxError):
+        gql.send(query=query, validate=True)
