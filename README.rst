@@ -20,9 +20,6 @@ You've got a graphQL API, and you want to talk to it, right? For those of us who
 .. image:: https://img.shields.io/pypi/status/gql_py.svg
         :target: https://pypi.org/project/gql-py/
 
-.. image:: https://img.shields.io/pypi/dm/gql_py.png
-        :target: https://pypi.org/project/gql-py/
-
 .. image:: https://circleci.com/gh/phalt/gql_py/tree/master.svg?style=svg
         :target: https://circleci.com/gh/phalt/gql_py/tree/master
 

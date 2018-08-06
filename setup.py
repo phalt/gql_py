@@ -21,7 +21,7 @@ setup(
     author="Paul Hallett",
     author_email='paulandrewhallett@gmail.com',
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
