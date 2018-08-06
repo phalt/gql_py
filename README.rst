@@ -20,14 +20,16 @@ You've got a graphQL API, and you want to talk to it, right? For those of us who
 .. image:: https://img.shields.io/pypi/status/gql_py.svg
         :target: https://pypi.org/project/gql-py/
 
-.. image:: https://img.shields.io/pypi/dm/gql_py.png
-        :target: https://pypi.org/project/gql-py/
-
 .. image:: https://circleci.com/gh/phalt/gql_py/tree/master.svg?style=svg
         :target: https://circleci.com/gh/phalt/gql_py/tree/master
 
+Installing the project is easy:
 
+.. code-block:: bash
 
+    pip install gql_py
+
+Full blown example:
 
 .. code-block:: python
 
@@ -44,6 +46,7 @@ You've got a graphQL API, and you want to talk to it, right? For those of us who
       }
     }
   '''
+
   variables = {
     'book_id': '654'
   }
@@ -60,18 +63,27 @@ You've got a graphQL API, and you want to talk to it, right? For those of us who
   >>> {'book': {'id': '654', 'title': 'Ursula K. Le Guin', 'title': 'A Wizard of Earthsea'}}
 
 
+You can validate your graphql query string by passing the __validate__ flag in the __send__ method:
+
+.. code-block:: python
+
+    gpl.send(query=query, validate=True)
+    >>> Traceback (most recent call last):
+    >>>     graphql.error.syntax_error.GraphQLSyntaxError: Syntax Error: Expected Name, found }
+
+
 📖 Features
 --------
 
 - No need to handle the HTTP layer. (You can still set HTTP headers, though!)
 - Responses come back as named tuples - even errors!
+- Validate your query strings easily.
 - Python 3.6+
 
 ✨ Future goals
 ---------------
 
-- Draw graphQL queries & mutations with Python code.
-- Hydrate API responses into Python objects.
+- Hydrate API responses into custom Python objects.
 
 🏗 Status
 ----------

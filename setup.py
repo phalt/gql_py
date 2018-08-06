@@ -10,6 +10,7 @@ with open('README.rst') as readme_file:
 
 requirements = [
     'requests==2.19.1',
+    'graphql-core-next==1.0.0rc2'
 ]
 
 setup_requirements = ['pytest-runner', ]
@@ -20,7 +21,7 @@ setup(
     author="Paul Hallett",
     author_email='paulandrewhallett@gmail.com',
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',

@@ -7,6 +7,7 @@ from collections import namedtuple
 from typing import Any, Mapping, Optional
 
 import requests
+from graphql import parse
 
 EXTRA_WHITE_SPACE = re.compile(r'\s{2,}')
 
@@ -82,11 +83,13 @@ class Gql:
     def send(
         self, *,
         query: str,
+        validate: Optional[bool] = False,
         variables: Optional[Mapping[str, Any]] = None,
         headers: Mapping[str, Any] = None,
     ) -> 'GraphQLResponse':
-
         cleaned_query = normalise_query(query)
+        if validate:
+            parse(cleaned_query)
         camelcased_variables = to_camelcase(variables) if variables else None
         payload = prepared_payload(
             cleaned_query=cleaned_query,
