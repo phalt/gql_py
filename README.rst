@@ -68,7 +68,7 @@ Full blown example:
 
 You can validate your graphql query string by passing the __validate__ flag in the __send__ method:
 
-..code-block:: python
+.. code-block:: python
 
     gpl.send(query=query, validate=True)
     >>> Traceback (most recent call last):
