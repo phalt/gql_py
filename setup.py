@@ -9,8 +9,8 @@ with open('README.rst') as readme_file:
     readme = readme_file.read()
 
 requirements = [
-    'requests==2.19.1',
-    'graphql-core-next==1.0.0rc2'
+    'requests>=2.19.1,<3',
+    'graphql-core-next>=1.0.0rc2,<2'
 ]
 
 setup_requirements = ['pytest-runner', ]
